@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slicewise</title>
+  <meta name="description" content="A DICOM viewer in the browser. Slicewise is for viewing, teaching, research and reviewing your own images. It is not a medical device and is not intended for diagnosis or treatment decisions.">
+  
+<script type="module">
+import init, * as bindings from '/slicewise-demo/slicewise-700b7b37f30b4835.js';
+
+const wasm = await init({ module_or_path: '/slicewise-demo/slicewise-11ffe23be1a8aa38_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+  <link rel="icon" href="/slicewise-demo/slicewise-32-e3e8e18f5cd265a0.png" integrity="sha384-Vl3IL4EAfh5Zxwf97FzXEYyJpMAWAEAdLl8e+loQfPLP2B+0la0ZrbMn1AsXVLhh"/>
+  <!-- Fallback faces for the scripts the bundled fonts lack, fetched
+       one at a time when a loaded object carries one of them. -->
+  
+  <style>
+    html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+    canvas { display: block; width: 100%; height: 100%; outline: none; }
+  </style>
+<link rel="modulepreload" href="/slicewise-demo/slicewise-700b7b37f30b4835.js" crossorigin="anonymous" integrity="sha384-iAPK2K1vNJkKai2fkFAtIGAn84jpZEiIkv90zEWlJQ8/gN5cpMQintocjoaygLca"><link rel="preload" href="/slicewise-demo/slicewise-11ffe23be1a8aa38_bg.wasm" crossorigin="anonymous" integrity="sha384-6gIDutAoGehaxVgwk1kfSM3REBS7eXdKJs0TUJFRQ38XSn1Vzmgetd9Dxk7ADMLH" as="fetch" type="application/wasm"></head>
+<body>
+  <canvas id="slicewise_canvas"></canvas>
+</body>
+</html>
